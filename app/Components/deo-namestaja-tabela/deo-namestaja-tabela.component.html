@@ -1,0 +1,62 @@
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Id Namestaja</th>
+      <th scope="col">Id Dela</th>
+      <th scope="col">Komada</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let n of sviDeloviNamestaja;let i = index;">
+    <tr>
+      <td>{{ n.id }}</td>
+      <td>{{ n.namestajId }}</td>
+      <td>{{ n.deoId }}</td>
+      <td>{{ n.komada}}</td>
+      <td>
+        <button (click)="detalji(n.id)" type="button" class="btn btn-success">Vidi detalje</button>
+      </td>
+      <td>
+        <button (click)="izmeni(n.id)" type="button" class="btn btn-primary">Izmeni</button>
+      </td>
+      <td>
+        <button (click)="obrisi(i)" type="button" class="btn btn-danger">Obrisi</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+<h2>Dodaj novi Deo namestaja: </h2>
+
+<label for="kk"> Namestaj: </label>
+<select id="kk" class="choose-select" (change)="onChangeNamestaj($event)">
+  <option *ngFor="let s of sviNamestaji">
+    {{s.id + " " + s.naziv + " " + s.opis}}
+  </option>
+</select>
+
+<br/>
+<br/>
+<label for="ff"> Deo: </label>
+<select  id="ff" class="choose-select" (change)="onChangeDeo($event)">
+  <option *ngFor="let s of sviDelovi">
+    {{s.id + " " + s.naziv + " " + s.dimenzije}}
+  </option>
+</select>
+<br/>
+<br/>
+<form [formGroup]="myForm">
+  <div class="form-group">
+    <label>Komada :</label>
+    <input class="form-control" formControlName="komada">
+
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" (click)="snimiDeoNamestaja()">
+      Dodaj
+    </button>
+  </div>
+</form>
+  
+  
+

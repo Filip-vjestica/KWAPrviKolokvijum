@@ -1,0 +1,41 @@
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Naziv</th>
+      <th scope="col">Dimenzije</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let n of sviDelovi;let i = index;">
+    <tr>
+      <td>{{ n.id }}</td>
+      <td>{{ n.naziv }}</td>
+      <td>{{ n.dimenzije }}</td>
+      <td>
+        <button (click)="detalji(n.id)" type="button" class="btn btn-success">Vidi detalje</button>
+      </td>
+      <td>
+        <button (click)="izmeni(n.id)" type="button" class="btn btn-primary">Izmeni</button>
+      </td>
+      <td>
+        <button (click)="obrisi(i)" type="button" class="btn btn-danger">Obrisi</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <h2>Dodaj novi Deo: </h2>
+  <form [formGroup]="myForm">
+    <div class="form-group">
+      <label>Naziv :</label>
+      <input class="form-control" formControlName="naziv">
+      <label>Dimenzije :</label>
+      <input class="form-control" formControlName="opis">
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" (click)="snimiDeo()">
+        Dodaj
+      </button>
+    </div>
+  </form>
+  

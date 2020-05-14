@@ -1,0 +1,30 @@
+<h2>Izmeni Deo Namestaja</h2>
+
+<label for="kk"> Namestaj: </label>
+<select id="kk"  class="choose-select" (change)="onChangeNamestaj($event)">
+  <option *ngFor="let s of sviNamestaji">
+    {{s.id + " " + s.naziv + " " + s.opis + " " + s.cena}}
+  </option>
+</select>
+
+<br/>
+<br/>
+<label for="ff"> Deo: </label>
+<select  id="ff"  class="choose-select" (change)="onChangeDeo($event)">
+  <option *ngFor="let s of sviDelovi">
+    {{s.id + " " + s.naziv + " " + s.dimenzije}}
+  </option>
+</select>
+<br/>
+<br/>
+<form [formGroup]="myForm">
+  <div class="form-group">
+    <label>Komada :</label>
+    <input class="form-control" formControlName="komada">
+
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" (click)="izmeniDeoNamestaja()">
+      Izmeni
+    </button>
+  </div>
+</form>
+

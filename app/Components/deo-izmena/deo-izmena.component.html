@@ -1,0 +1,13 @@
+<h1>Izmenite podatke Dela</h1>
+<form [formGroup]="form">
+  <div class="form-group">
+    <label>Naziv:</label>
+    <input class="form-control" formControlName="naziv" [(ngModel)]="deo.naziv">
+    <label>Dimenzije:</label>
+    <input class="form-control" formControlName="dimenzije"  [(ngModel)]="deo.dimenzije">
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="izmeniDeo()">
+    Izmeni
+  </button>
+</form>
+

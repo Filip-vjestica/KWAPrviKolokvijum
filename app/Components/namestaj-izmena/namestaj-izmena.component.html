@@ -1,0 +1,14 @@
+<h1>Izmenite podatke Namestaja</h1>
+<form [formGroup]="form">
+  <div class="form-group">
+    <label>Naziv:</label>
+    <input class="form-control" formControlName="naziv" [(ngModel)]="namestaj.naziv">
+    <label>Opis:</label>
+    <input class="form-control" formControlName="opis"  [(ngModel)]="namestaj.opis">
+    <label>Cena:</label>
+    <input class="form-control" formControlName="cena"  [(ngModel)]="namestaj.cena">
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="izmeniNamestaj()">
+    Izmeni
+  </button>
+</form>
